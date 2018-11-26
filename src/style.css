@@ -135,3 +135,12 @@ a.nav__link {
   text-align: center;
   margin: 0 !important;
 }
+
+.top5 {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 0.9em;
+}

@@ -11,39 +11,25 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    var that = this;
-    var url = 'https://api.github.com/users'
-  
-    fetch(url)
-    .then(function(response) {
-      if (response.status >= 400) {
-        throw new Error("Bad response from server");
-      }
-      return response.json();
-    })
-    .then(function(data) {
-      // console.log(data);
-      that.setState({ users: data });
-    });
+      var data = ["GrahamCampbell","fabpot","weierophinney","rkh","josh"];
+      this.setState({ users: data });
   }
   
 
   render() {
     let rows = []
     let users = this.state.users
-    console.log(users)
-
     users.forEach((row, index) => {
       rows.push(
         <div className="user-tab" key={`user-${index}`}>
           <Link 
             to={{
-              pathname: `/about/${row.id}`,
+              pathname: `/about/${row}`,
               state: { prev: true },
             }}
             className="nav__link"
           >
-            {row.login}
+            {row}
           </Link>
         </div>
       )
@@ -55,6 +41,8 @@ export default class Home extends Component {
         </div>
 
         <div className="wrapper">
+          <div className="top5">Top 5 Github Users</div>
+          <div className="description">Tap the username to see more information</div>
           {rows}
           <div className="clearfix"></div>
         </div>
